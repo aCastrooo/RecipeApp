@@ -1,3 +1,4 @@
+'''Sets up the Node and Linked List objects to be used in other parts of the program'''
 class Node(object):
     def __init__(self, title = None, time = None, nextNode = None):
         self.title = title

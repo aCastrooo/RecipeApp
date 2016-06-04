@@ -79,16 +79,20 @@ def PickRecipe(num):
         print 'What would you like to do now?\n1) Search Again\n2) Go Back'
         whatnow = raw_input()
         if whatnow == '1':
+            write_to(savedRList)
             InputSearchRecipe()
         else:
+            write_to(savedRList)
             selectOptionRecipe()
     else:
         print '\n\n'
         print 'What would you like to do now?\n1) Search Again\n2) Go Back'
         whatnow = raw_input()
         if whatnow == '1':
+            write_to(savedRList)
             InputSearchRecipe()
         else:
+            write_to(savedRList)
             selectOptionRecipe()
 
 
@@ -105,14 +109,14 @@ def selectOptionIng():
 '''Returns the list of saved recipes'''
 
 def RecipeList():
-    write_to(savedRList)
+    newsavedRList = get_recipes(savedRList)
     print '\n\nYour Recipes:\n'
-    if savedRList.front == None:
+    if newsavedRList.front == None:
         print 'No saved recipes :(\nGo add some!'
         enter = raw_input()
         selectOptionRecipe()
     else:
-        savedRList.printData()
+        newsavedRList.printData()
         enter = raw_input()
         selectOptionRecipe()
 

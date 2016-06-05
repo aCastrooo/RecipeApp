@@ -1,6 +1,7 @@
 import unirest
 import sys
-from RecipeFile import write_to, get_recipes
+from RecipeFile import write_to_recipe, get_recipes
+from IngredientsFile import write_to_ing, get_ing
 from urllib2 import urlopen, URLError
 from LinkedListInit import LinkedList, Node
 
@@ -30,6 +31,25 @@ def putInRList(theTitle, theTime):
         while curr.nextNode != None:
             curr = curr.nextNode
         curr.set_next(newNode)
+
+
+
+
+'''User inputs the ingredient they wish to save and the quantity of that ingredient'''
+
+def AddIng():
+    print '\nWhat ingredient would you like to add?'
+    add = raw_input()
+    print '\nHow much of the ingredient do you have?'
+    quant = raw_input()
+    write_to_ing(add, quant)
+    print '\nIngredient added!\n'
+    print 'Would you like to add another?\n(Y/N)'
+    yorn = raw_input()
+    if yorn == 'y' or yorn == 'Y':
+        AddIng()
+    elif yorn == 'n' or yorn == 'N':
+        selectOptionIng()
 
 
 
@@ -79,28 +99,25 @@ def PickRecipe(num):
         print 'What would you like to do now?\n1) Search Again\n2) Go Back'
         whatnow = raw_input()
         if whatnow == '1':
-            write_to(savedRList)
+            write_to_recipe(savedRList)
             InputSearchRecipe()
         else:
-            write_to(savedRList)
+            write_to_recipe(savedRList)
             selectOptionRecipe()
     else:
         print '\n\n'
         print 'What would you like to do now?\n1) Search Again\n2) Go Back'
         whatnow = raw_input()
         if whatnow == '1':
-            write_to(savedRList)
+            write_to_recipe(savedRList)
             InputSearchRecipe()
         else:
-            write_to(savedRList)
+            write_to_recipe(savedRList)
             selectOptionRecipe()
 
 
 
 def SearchViaIngredient():
-    print 'this function is not implemented'
-
-def selectOptionIng():
     print 'this function is not implemented'
 
 
@@ -123,6 +140,28 @@ def RecipeList():
 
 
 
+'''Returns the list of ingredients'''
+
+def IngredientsList(ingList):
+    ingList = get_ing(ingList)
+    print '\nYour Ingredients:'
+    if not ingList:
+        print '\nYou have no ingredients :(\nYou can add some!'
+        enter = raw_input()
+        selectOptionIng()
+    else:
+        for ingredients in ingList:
+            print '\nIngredient: ' + ingredients + '\nQuantity: ' + ingList[ingredients]
+        enter = raw_input()
+        selectOptionIng()
+
+
+
+
+
+###
+###The following functions print out the menus
+###
 '''Asks the user for input regarding if they wish to save a recipe or not'''
 
 def pickfromRecipeMenu():
@@ -147,6 +186,29 @@ def printLines():
     while n < 2:
         print('--------------------------------------------------------------')
         n = n + 1
+
+
+
+
+'''Prints the ingredients menu'''
+def selectOptionIng():
+    n = 0
+    while n < 26:
+        print('\n')
+        n += 1
+    printLines()
+    print('INGREDIENTS')
+    printLines()
+    print('1) View Your Ingredients\n2) Add An Ingredient\n3) Delete An Ingredient\n4) Go Back')
+    ioption = raw_input()
+    if ioption == '1':
+        IngredientsList(ingList)
+    if ioption == '2':
+        AddIng()
+    if ioption == '3':
+        deleteIng()
+    if ioption == '4':
+        selectOptionMain()
 
 
 

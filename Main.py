@@ -1,7 +1,7 @@
 import unirest
 import sys
 from RecipeFile import write_to_recipe, get_recipes
-from IngredientsFile import write_to_ing, get_ing
+from IngredientsFile import write_to_ing, get_ing, delete_ing
 from urllib2 import urlopen, URLError
 from LinkedListInit import LinkedList, Node
 
@@ -42,8 +42,9 @@ def AddIng():
     add = raw_input()
     print '\nHow much of the ingredient do you have?'
     quant = raw_input()
-    write_to_ing(add, quant)
-    print '\nIngredient added!\n'
+    ingList[add] = quant
+    write_to_ing(ingList)
+    print '\n' + add + ' was added with quantity: ' + quant + '\n'
     print 'Would you like to add another?\n(Y/N)'
     yorn = raw_input()
     if yorn == 'y' or yorn == 'Y':
@@ -51,6 +52,24 @@ def AddIng():
     elif yorn == 'n' or yorn == 'N':
         selectOptionIng()
 
+
+
+
+'''User inputs the ingredient to be deleted, then it gets deleted'''
+
+def deleteIng():
+    global ingList
+    print '\nWhich ingredient do you want to delete?'
+    delete = raw_input()
+    for ingredients in ingList:
+        if delete == ingredients:
+            ingList = delete_ing(ingList, delete)
+            print '\n' + delete + ' has been deleted!'
+            enter = raw_input()
+            selectOptionIng()
+    print '\nIngredient not found.'
+    enter = raw_input()
+    selectOptionIng()
 
 
 

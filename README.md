@@ -5,9 +5,12 @@ This appplication uses the Spoonacular API 'Recipe - Food - Nutrition' to provid
 
 ###Features
 -Save ingredients and recipes
+
 -Search new recipes via query or via already saved ingredients
+
 -Keep track of the quantity of your ingredients
 
 ###Coming Soon to the App
 -Nutrition information (calories, fat, protein, etc)
+
 -GUI interface for easy navigation

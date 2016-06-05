@@ -8,7 +8,7 @@ This app keeps track of recipes and ingredients and uses the Spoonacular API 'Re
 
 -Keep track of the quantity of your ingredients
 
-###Coming Soon to the App
+###Coming Soon to Rapp
 -Nutrition information (calories, fat, protein, etc)
 
 -GUI interface for easy navigation

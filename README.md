@@ -1,4 +1,4 @@
-# RecipeApp
+# Rapp: The Recipe App
 This app keeps track of recipes and ingredients and uses the Spoonacular API 'Recipe - Food - Nutrition' to provide hundreds of recipes.
 
 ###Features

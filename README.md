@@ -12,3 +12,7 @@ This app keeps track of recipes and ingredients and uses the Spoonacular API 'Re
 -Nutrition information (calories, fat, protein, etc)
 
 -GUI interface for easy navigation
+
+
+
+####Uses Python 2.7.11

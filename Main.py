@@ -21,10 +21,10 @@ ingList = {}
 '''Takes the data from the generated list of recipes and organizes it
    into a linked list of recipes'''
 
-def putInRList(theTitle, theTime):
+def putInRList(theTitle, theTime, rID):
     curr = rList.front
-    newNode = Node(theTitle, theTime, None)
-    tempNode = Node(None, None, None)
+    newNode = Node(theTitle, theTime, rID, None)
+    tempNode = Node(None, None, None, None)
     if rList.front == None:
         rList.front = newNode
     else:
@@ -90,7 +90,7 @@ def InputSearchRecipe():
     for result in response.body['results']:
         print str(c) + ') ' + result['title'].encode('utf-8')
         print "Time to cook:", result['readyInMinutes'], "minutes\n"
-        putInRList(result['title'], result['readyInMinutes'])
+        putInRList(result['title'], result['readyInMinutes'], result['id'])
         c = c + 1
     pickfromRecipeMenu()
 
@@ -112,7 +112,7 @@ def PickRecipe(num):
     yorn = raw_input()
     print '\n'
     if yorn == 'Y' or yorn == 'y':
-        savedRList.insert(newFront.title, newFront.time)
+        savedRList.insert(newFront.title, newFront.time, newFront.rID)
         print str(savedRList.front.return_title()) + ' has been saved!'
         print '\n\n'
         print 'What would you like to do now?\n1) Search Again\n2) Go Back'
@@ -276,7 +276,7 @@ def selectOptionMain():
         print('\n')
         print('\n')
         print('\n')
-        print('Thanks for using "app name"!')
+        print('Thanks for using Rapp: The Recipe App!')
         sys.exit(0)
 
 
